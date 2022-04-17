@@ -18,6 +18,5 @@ El proyecto es open source o de codigo abierto para todo aquel que lo necesite o
 
 - Python
 - Raspberry pi 3 Model B+
-- Amazon web services (Instancia que almacena la informacion en una base de datos mongo)
 - Requests
 - GPIO
