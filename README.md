@@ -1,5 +1,13 @@
 # sensorbox_server_raspy
-Server with raspberry and python
+         ____                            ____            
+        / ___|  ___ _ __  ___  ___  _ __| __ )  _____  __
+        \___ \ / _ \ '_ \/ __|/ _ \| '__|  _ \ / _ \ \/ /
+         ___) |  __/ | | \__ \ (_) | |  | |_) | (_) >  < 
+        |____/ \___|_| |_|___/\___/|_|  |____/ \___/_/\_\ 
+                            
+                                    
+                            
+                           FrellDevs341
 
 # ¿Que es?
 Sensorbox es una solucion para ambientes laborales comerciales, en este caso de carnicerias o lugares que requieren un cuarto frio.
