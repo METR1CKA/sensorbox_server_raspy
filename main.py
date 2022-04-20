@@ -1,7 +1,7 @@
 import os
 import time
 import sys
-from api.cliente import *
+from app.client.api.client import *
 
 titulo = '''
          ____                            ____            
