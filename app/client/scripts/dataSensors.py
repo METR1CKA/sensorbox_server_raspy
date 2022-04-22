@@ -1,7 +1,6 @@
 import RPi.GPIO as GPIO
 import Adafruit_DHT
 import time
-import os
 
 class dataSensors:
 
@@ -28,17 +27,9 @@ class dataSensors:
         return distancia
         
     
-    def thInterna(self, sen):
+    def th(self):
         sensor = Adafruit_DHT.DHT11
-        pin = sen.pin[0] #22
-        humedad, temperatura = Adafruit_DHT.read_retry(sensor, pin)
-        return [humedad,temperatura]
-        #print('\nHumedad: {}'.format(humedad))
-        #print('Temperatura: {}'.format(temperatura))
-    
-    def thExterna(self, sen):
-        sensor = Adafruit_DHT.DHT11
-        pin = sen.pin[0] #17
+        pin = 22
         humedad, temperatura = Adafruit_DHT.read_retry(sensor, pin)
         return [humedad,temperatura]
         #print('\nHumedad: {}'.format(humedad))

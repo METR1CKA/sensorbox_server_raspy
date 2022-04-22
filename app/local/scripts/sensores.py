@@ -1,5 +1,4 @@
-from data.dataJson import claseJson
-
+from app.client.api.client import RestAPI
 
 class sensors:
 
@@ -16,9 +15,6 @@ class sensors:
         self.nombre = ''
         self.pin = []
         self.tipo = ''
-    
-    def addSensor(self, sensor):
-        self.listaSensors.append(sensor)
     
     def sensorsDicc(self):
         return {

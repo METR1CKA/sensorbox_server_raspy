@@ -2,6 +2,7 @@ import os
 import time
 import sys
 from app.client.api.client import *
+from app.client.subMainInt import *
 
 titulo = '''
          ____                            ____            
@@ -23,11 +24,11 @@ try:
     limpiar()
     print(titulo)
     print('\nPresione Ctrl + C para cancelar la operacion')
-    time.sleep(2)
+    time.sleep(1)
     print('\nComprobando conexion a internet...')
     conexion = RestAPI()
     conectado = conexion.existsConnection()
-    time.sleep(2)
+    time.sleep(1)
     while conectado == False:
         print('\nConexion a internet no establecida...   ')
         time.sleep(1)
@@ -39,14 +40,24 @@ try:
         limpiar()
         print(titulo)
     else:
-        print('\nConectado a internet   ')
-        time.sleep(2)
-        print('\nEjecutando operaciones')
-        time.sleep(1)
-        
-    limpiar()
+        try:
+            print('\nConectado a internet   ')
+            time.sleep(2)
+            print('\nEjecutando operaciones')
+            time.sleep(1)
+            sm = operacionInt()
+            print(sm.pruebaTemperaturaHumedad())
+            #while True:
+            #    op = operacionInt()
+            #    op.init()
+            #    time.sleep(1)
+        except KeyboardInterrupt:
+            print('\n\nHasta pronto...')
+            time.sleep(1)
+            os.system('clear')
+            pass
 except KeyboardInterrupt:
-    print('\n\nSaliendo...')
+    print('\n\nHasta pronto...')
     time.sleep(1)
     os.system('clear')
     sys.exit(0)

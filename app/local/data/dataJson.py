@@ -8,28 +8,23 @@ class claseJson:
     def __init__(self, filename):
         self.filename = filename
         self.namefile = self.filename + ".json"
-        self.namedir = "data/jsonDataSensors/"
+        self.namedir = "app/local/data/jsonDataSensores/"
         self.path_file = self.namedir + self.namefile
 
     def crearJson(self):
-        try:
-            if os.path.isfile(self.path_file):
-                os.system('rm -rf {}'.format(self.path_file))
-            else:
-                os.system('touch {}'.format(self.path_file))
-        except:
-            return "No se creo el archivo"
+        if os.path.isfile(self.path_file):
+            os.system('rm -rf {}'.format(self.path_file))
+            os.system('touch {}'.format(self.path_file))
+        else:
+            os.system('touch {}'.format(self.path_file))
     
     def llenarJson(self, listaDiccionario):
-        try:
-            if os.path.isfile(self.path_file):
-                file = open(self.path_file, "w")
-                file = json.dump(listaDiccionario, file)
-                return 'Datos llenados correctamente'
-            else:
-                return 'El archivo no existe'
-        except:
-            return 'No se pudo crear el archivo'
+        if os.path.isfile(self.path_file):
+            file = open(self.path_file, "w")
+            file = json.dump(listaDiccionario, file)
+            return 'Datos llenados correctamente'
+        else:
+            return 'El archivo no existe'
 
     def obtenerJson(self):
         data = []
@@ -40,6 +35,6 @@ class claseJson:
     
     def existeJson(self):
         if os.path.isfile(self.path_file):
-            return 'El archivo existe'
+            return True
         else:
-            return 'El archivo no existe'
+            return False
