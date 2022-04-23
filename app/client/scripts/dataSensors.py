@@ -7,51 +7,44 @@ class dataSensors:
     def __init__(self):
         GPIO.setmode(GPIO.BCM)
         GPIO.setwarnings(False)
-    
-    def us(self, sensor):
-        TRIG = sensor.pin[0] #25 
-        ECHO = sensor.pin[1] #24
-        GPIO.setup(TRIG, GPIO.OUT)
-        GPIO.setup(ECHO, GPIO.IN)
-        GPIO.output(TRIG, True)
-        GPIO.output(TRIG, False)
-        while GPIO.input(ECHO) == False:
-            start = time.time()
-        while GPIO.input(ECHO) == True:
-            end = time.time()
-        sig_time = end - start
-        distancia = sig_time / 0.000058
-        #distancia2 = sig_time / 0.000148
-        #print('\nDistancia : {} centimetros'.format(distancia))
-        #print('Distancia 2: {} pulgadas'.format(distancia2))
-        return distancia
-        
-    
-    def th(self):
-        sensor = Adafruit_DHT.DHT11
-        pin = 22
-        humedad, temperatura = Adafruit_DHT.read_retry(sensor, pin)
-        return [humedad,temperatura]
-        #print('\nHumedad: {}'.format(humedad))
-        #print('Temperatura: {}'.format(temperatura))
 
-    def pir(self, sensor):
-        GPIO_PIR = sensor.pin[0] #18
+    def us(self, pin1, pin2):
+        GPIO_ECHO = pin1
+        GPIO_TRIGGER = pin2
+        GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
+        GPIO.setup(GPIO_ECHO, GPIO.IN)
+        GPIO.output(GPIO_TRIGGER, True)
+        GPIO.output(GPIO_TRIGGER, False)
+        StartTime = time.time()
+        StopTime = time.time()
+        while GPIO.input(GPIO_ECHO) == 0:
+            StartTime = time.time()
+        while GPIO.input(GPIO_ECHO) == 1:
+            StopTime = time.time()
+        TimeElapsed = StopTime - StartTime
+        distancia = (TimeElapsed * 34300) / 2
+        return distancia
+    
+    def th(self, pin):
+        sensor = Adafruit_DHT.DHT11
+        humedad, temperatura = Adafruit_DHT.read_retry(sensor, pin)
+        return [temperatura, humedad]
+
+    def pir(self, pin):
+        GPIO_PIR = pin
         GPIO.setup(GPIO_PIR, GPIO.IN)
         if GPIO.input(GPIO_PIR):
             return 'Se detecto presencia'
         else:
-            return 'No se a detectado presencia'
+            return 'No se ha detectado presencia'
     
-    def gh(self, sensor):
-        pin1 = sensor.pin[0] #20
-        pin2 = sensor.pin[1] #21
+    def gh(self, pin1, pin2):
         GPIO.setup(pin1, GPIO.IN)
         GPIO.setup(pin2, GPIO.OUT)
         if GPIO.input(pin1):
-            return 'No hay presencia de humo o de gas'
+            return 'No se ha detectado nada'
         elif GPIO.input(pin1) != 1:
-            hg = 'Se a detectado presencia de humo o de gas'
+            hg = 'Se ha detectado algo'
             GPIO.output(pin2, False)
             time.sleep(1)
             GPIO.output(pin2, True)
