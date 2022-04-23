@@ -1,3 +1,4 @@
+import json
 import requests 
 from requests.structures import CaseInsensitiveDict
 
@@ -26,7 +27,7 @@ class RestAPI:
         url_post = self.endpoint + path
         self.headers["Accept"] = "application/json"
         #self.headers["Authorization"] = "Bearer %s" % self.token
-        res = requests.post(url=url_post, data=form, headers=self.headers)
+        res = requests.post(url=url_post, json=form, headers=self.headers)
         return res.json()
     
     def existsConnection(self):
