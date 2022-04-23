@@ -45,12 +45,8 @@ try:
             time.sleep(2)
             print('\nEjecutando operaciones')
             time.sleep(1)
-            sm = operacionInt()
-            print(sm.pruebaTemperaturaHumedad())
-            #while True:
-            #    op = operacionInt()
-            #    op.init()
-            #    time.sleep(1)
+            op = operacionInt()
+            op.init()
         except KeyboardInterrupt:
             print('\n\nHasta pronto...')
             time.sleep(1)
