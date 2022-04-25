@@ -3,6 +3,7 @@ import time
 import sys
 from app.client.api.client import *
 from app.client.subMainInt import *
+from app.local.subMainLocal import *
 
 titulo = '''
          ____                            ____            
@@ -24,36 +25,41 @@ try:
     limpiar()
     print(titulo)
     print('\nPresione Ctrl + C para cancelar la operacion')
-    time.sleep(1)
+    time.sleep(2)
     print('\nComprobando conexion a internet...')
-    conexion = RestAPI()
-    conectado = conexion.existsConnection()
     time.sleep(1)
-    while conectado == False:
-        print('\nConexion a internet no establecida...   ')
-        time.sleep(1)
-        print('\nVerifique su conexion a internet')
-        time.sleep(1)
-        print('\nLa informacion generada se almacenara localmente')
-        
-        time.sleep(1)
-        limpiar()
-        print(titulo)
-    else:
-        try:
-            print('\nConectado a internet   ')
+    while True:
+        conexion = RestAPI()
+        conectado = conexion.existsConnection()
+        if conectado == False:
+            print('\nConexion a internet no establecida...   ')
             time.sleep(2)
-            print('\nEjecutando operaciones')
-            time.sleep(1)
-            op = operacionInt()
-            op.init()
-        except KeyboardInterrupt:
-            print('\n\nHasta pronto...')
-            time.sleep(1)
-            os.system('clear')
-            pass
+            print('\nVerifique su conexion a internet')
+            time.sleep(2)
+            print('\nLa informacion generada se almacenara localmente')
+            op_l = operacionLocal()
+            op_l.init_l()
+            time.sleep(3)
+            limpiar()
+            print(titulo)
+        else:
+            try:
+                print('\nConectado a internet   ')
+                time.sleep(5)
+                print('\nEjecutando operaciones')
+                time.sleep(5)
+                op_lo = operacionLocal()
+                op_lo.guardado()
+                time.sleep(5)
+                op_i = operacionInt()
+                op_i.init_i()
+            except KeyboardInterrupt:
+                print('\n\nHasta pronto...')
+                time.sleep(1)
+                limpiar()
+                break
 except KeyboardInterrupt:
     print('\n\nHasta pronto...')
     time.sleep(1)
-    os.system('clear')
+    limpiar()
     sys.exit(0)

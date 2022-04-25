@@ -2,13 +2,12 @@ import json
 import os.path
 import os
 
-
 class claseJson:
 
     def __init__(self, filename):
         self.filename = filename
         self.namefile = self.filename + ".json"
-        self.namedir = "app/local/data/jsonDataSensores/"
+        self.namedir = "/home/pi/sensorbox/app/local/data/jsonDataSensores/"
         self.path_file = self.namedir + self.namefile
 
     def crearJson(self):

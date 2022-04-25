@@ -1,4 +1,3 @@
-import json
 import requests 
 from requests.structures import CaseInsensitiveDict
 
@@ -19,7 +18,6 @@ class RestAPI:
         url_get = self.endpoint + path
         self.headers["Accept"] = "application/json"
         #self.headers["Authorization"] = "Bearer %s" % self.token
-        #res = requests.get(url=url_get, headers=self.headers)
         res = requests.get(url=url_get, headers=self.headers)
         return res.json()
 

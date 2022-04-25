@@ -1,12 +1,14 @@
 import RPi.GPIO as GPIO
 import Adafruit_DHT
 import time
+from gpiozero import MotionSensor
 
 class dataSensors:
 
     def __init__(self):
         GPIO.setmode(GPIO.BCM)
         GPIO.setwarnings(False)
+
 
     def us(self, pin1, pin2):
         GPIO_ECHO = pin1
@@ -34,7 +36,15 @@ class dataSensors:
         GPIO_PIR = pin
         GPIO.setup(GPIO_PIR, GPIO.IN)
         if GPIO.input(GPIO_PIR):
-            return 'Se detecto presencia'
+            led = 4
+            GPIO.setup(led, GPIO.OUT)
+            pir = MotionSensor(pin)
+            pir.wait_for_motion()
+            mensaje = 'Se ha detectado presencia'
+            GPIO.output(led, True)
+            pir.wait_for_no_motion()
+            GPIO.output(led, False)
+            return mensaje
         else:
             return 'No se ha detectado presencia'
     
@@ -44,9 +54,13 @@ class dataSensors:
         if GPIO.input(pin1):
             return 'No se ha detectado nada'
         elif GPIO.input(pin1) != 1:
-            hg = 'Se ha detectado algo'
+            buzzer = 26
+            GPIO.setup(buzzer, GPIO.OUT)
+            GPIO.output(buzzer, True)
             GPIO.output(pin2, False)
             time.sleep(1)
             GPIO.output(pin2, True)
+            GPIO.output(buzzer, False)
+            hg = 'Se ha detectado algo'
             return hg
 
