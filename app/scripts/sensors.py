@@ -24,7 +24,7 @@ class sensors:
     
     def peticionSensores(self):
         api = RestAPI()
-        api.endpoint = 'http://192.168.1.76:3333/'
+        api.endpoint = 'http://54.241.103.30:3333/'
         datos = api.methodGet('sensors/get')
         sensores = datos['data']
         return sensores

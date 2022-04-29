@@ -148,15 +148,17 @@ class operacionLocal:
     def getNewList(self):
         return self.listaNueva
     
-    def guardado(self):
+    def locales(self):
         local = operacionLocal()
         myTH = local.getTH()
         myUS = local.getUS()
         myPIR = local.getPIR()
         myGH = local.getGH()
         newList = local.getNewList()
-        print('\n{}'.format(self.archivoJson(myTH, 'TH')))
-        print('\n{}'.format(self.archivoJson(myUS, 'US')))
-        print('\n{}'.format(self.archivoJson(myPIR, 'PIR')))
-        print('\n{}'.format(self.archivoJson(myGH, 'GH')))
-        print('\n{}'.format(self.archivoJson(newList, 'Nuevo')))
+        self.archivoJson(myTH, 'TH')
+        self.archivoJson(myUS, 'US')
+        self.archivoJson(myPIR, 'PIR')
+        self.archivoJson(myGH, 'GH')
+        self.archivoJson(newList, 'Nuevo')
+
+        

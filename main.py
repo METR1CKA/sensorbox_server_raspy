@@ -45,12 +45,12 @@ try:
         else:
             try:
                 print('\nConectado a internet   ')
-                time.sleep(5)
+                time.sleep(2)
                 print('\nEjecutando operaciones')
-                time.sleep(5)
+                time.sleep(2)
                 op_lo = operacionLocal()
-                op_lo.guardado()
-                time.sleep(5)
+                op_lo.locales()
+                time.sleep(2)
                 op_i = operacionInt()
                 op_i.init_i()
             except KeyboardInterrupt:

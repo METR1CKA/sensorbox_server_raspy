@@ -1,21 +1,39 @@
 from ..scripts.sensors import *
 from ..scripts.dataSensors import *
 from datetime import datetime
+import os
 import time
+import sys
 
 class operacionInt:
 
     def init_i(self):
         self.Sensores()
         print('\nEspere mientras se configura la conexion')
-        time.sleep(10)
-        self.nuevosSensores()
-        self.archivos('TH', 'th/store')
-        self.archivos('US', 'us/store')
-        self.archivos('PIR', 'pir/store')
-        self.archivos('GH', 'gh/store')
-        print('\nEjecutando operacion de envio de datos')
-        self.envio()
+        time.sleep(1)
+        while True:
+            try:
+                existe = RestAPI()
+                conexion = existe.existsConnection()
+                if conexion == False:
+                    print('\nAun no esta configurada la red, espere un  momento')
+                else:
+                    self.nuevosSensores()
+                    self.archivos('TH', 'th/store')
+                    time.sleep(1)
+                    self.archivos('US', 'us/store')
+                    time.sleep(1)
+                    self.archivos('PIR', 'pir/store')
+                    time.sleep(1)
+                    self.archivos('GH', 'gh/store')
+                    time.sleep(1)
+                    print('\nEjecutando operacion de envio de datos')
+                    self.envio()
+            except KeyboardInterrupt:
+                print('\n\nHasta pronto...')
+                time.sleep(1)
+                os.system('clear')
+                sys.exit(0)
 
     def Sensores(self):
         js = claseJson('sensores')
@@ -65,14 +83,13 @@ class operacionInt:
         if existe == True:
             data = js.obtenerJson()
             if data == []:
-                print('\nNo hay nada')
+                print('\nNo hay datos en el archivo {}'.format(file))
             else:
                 api = RestAPI()
-                api.endpoint = 'http://192.168.1.76:3333/'
+                api.endpoint = 'http://54.241.103.30:3333/'
                 for x in data:
-                    print(x)
-                #info = api.methodPost(path, data)
-                #print(info['mensaje'])
+                    info = api.methodPost(path, data)
+                    print(info['mensaje'])
         else:
             print('\nEl archivo {} no existe'.format(file))
 
@@ -112,7 +129,7 @@ class operacionInt:
     def dataTH(self, sensor):
         try:
             api = RestAPI()
-            api.endpoint = 'http://192.168.1.76:3333/'
+            api.endpoint = 'http://54.241.103.30:3333/'
             ds = dataSensors()
             pin = sensor.pines[0]
             sensorID = sensor._id
@@ -127,7 +144,7 @@ class operacionInt:
     def dataUS(self, sensor):
         try:
             api = RestAPI()
-            api.endpoint = 'http://192.168.1.76:3333/'
+            api.endpoint = 'http://54.241.103.30:3333/'
             ds = dataSensors()
             pin1 = sensor.pines[0]
             pin2 = sensor.pines[1]
@@ -143,7 +160,7 @@ class operacionInt:
     def dataPIR(self, sensor):
         try:
             api = RestAPI()
-            api.endpoint = 'http://192.168.1.76:3333/'
+            api.endpoint = 'http://54.241.103.30:3333/'
             ds = dataSensors()
             pin = sensor.pines[0]
             sensorID = sensor._id
@@ -158,7 +175,7 @@ class operacionInt:
     def dataGH(self, sensor):
         try:
             api = RestAPI()
-            api.endpoint = 'http://192.168.1.76:3333/'
+            api.endpoint = 'http://54.241.103.30:3333/'
             ds = dataSensors()
             pin1 = sensor.pines[0]
             pin2 = sensor.pines[1]
