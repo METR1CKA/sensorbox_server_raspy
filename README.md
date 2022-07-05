@@ -1,6 +1,10 @@
 # SENSORBOX
 
-Frell Development
+FRELLDEVS
+
+## Python
+
+* SERVER RASPBERRY
 
 ## ¿Que es?
 Sensorbox es una solucion para ambientes laborales comerciales, en este caso de carnicerias o lugares que requieren un cuarto frio.
@@ -21,3 +25,5 @@ El proyecto es open source o de codigo abierto para todo aquel que lo necesite o
 * Raspberry pi 3 Model B+
 * Requests
 * GPIO
+
+> Este sistema creado en python solo funciona en sistemas Linux raspberryOS
