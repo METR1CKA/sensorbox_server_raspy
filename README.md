@@ -27,3 +27,34 @@ El proyecto es open source o de codigo abierto para todo aquel que lo necesite o
 * GPIO
 
 > Este sistema creado en python solo funciona en sistemas Linux raspberryOS
+
+# Uso
+
+1. Debera instalar con `pip` los recursos de *Requests* y de *GPIO*
+
+2. Debera instalar las `NerdFonts` en su terminal para visualizar mejor el diseño de la interfaz del programa
+
+## Opcional
+
+### *Archivo sensorbox.py*
+
+1. Este archivo se coloca en la ruta /usr/bin/ de su sistema Linux
+
+2. Darle todos los privilegios al archivo con `sudo chmod 777 sensorbox.py`
+
+3. Cierre la terminal y vuelva a abrir una nueva
+
+4. Al escribir `sensorbox.py` en su terminal, se ejecutara el programa
+
+5. Puede escribir `sensorbox.py -h` para obtener información de uso
+
+### *ZSH o BASH*
+
+1. En tu sistema Linux raspberryOS, por defecto, el tipo de *SHELL* es una *BASH*, en caso de tener una *ZSH* en lugar de una *BASH*, crearas un alias en el archivo `~/.zshrc`
+
+2. Ejemplo:
+    * `alias sensorbox='sensorbox.py'`
+
+3. Cierre la terminal y vuelva a abrir una nueva
+
+4. Escribes sensorbox y de igual manera ejecutaras el programa
