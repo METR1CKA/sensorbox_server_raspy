@@ -38,7 +38,7 @@ El proyecto es open source o de codigo abierto para todo aquel que lo necesite o
 
 ### *Archivo sensorbox.py*
 
-1. Este archivo se coloca en la ruta /usr/bin/ de su sistema Linux
+1. Este archivo se coloca en la ruta `/usr/bin/` de su sistema Linux
 
 2. Darle todos los privilegios al archivo con `sudo chmod 777 sensorbox.py`
 
