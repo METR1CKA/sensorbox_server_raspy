@@ -58,3 +58,9 @@ El proyecto es open source o de codigo abierto para todo aquel que lo necesite o
 3. Cierre la terminal y vuelva a abrir una nueva
 
 4. Escribes sensorbox y de igual manera ejecutaras el programa
+
+# **METR1CKA**
+
+> [Pagina web](https://metr1cka.github.io "Visitanos en DevBlogs")
+
+> [Mas repositorios](https://github.com/METR1CKA "Mi perfil")
