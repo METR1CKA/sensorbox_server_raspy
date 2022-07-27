@@ -30,7 +30,7 @@ El proyecto es open source o de codigo abierto para todo aquel que lo necesite o
 
 # Uso
 
-1. Debera instalar con `pip` los recursos de `*Requests*` y de `*GPIO*`
+1. Debera instalar con `pip` los recursos de `Requests` y de `GPIO`
 
 2. Debera instalar las `NerdFonts` en su terminal para visualizar mejor el diseño de la interfaz del programa
 
