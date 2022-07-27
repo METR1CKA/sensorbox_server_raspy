@@ -61,7 +61,7 @@ El proyecto es open source o de codigo abierto para todo aquel que lo necesite o
 
 ## Arbol de directorios
 
-```console
+```
 sensorbox_server_raspy
 ├── app
 │   ├── client
