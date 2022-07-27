@@ -59,6 +59,34 @@ El proyecto es open source o de codigo abierto para todo aquel que lo necesite o
 
 4. Escribes sensorbox y de igual manera ejecutaras el programa
 
+## Arbol de directorios
+
+sensorbox_server_raspy
+├── app
+│   ├── client
+│   │   ├── api
+│   │   │   └── client.py
+│   │   └── subMainInt.py
+│   ├── local
+│   │   ├── data
+│   │   │   ├── dataJson.py
+│   │   │   └── jsonDataSensores
+│   │   │       ├── GH.json
+│   │   │       ├── Nuevo.json
+│   │   │       ├── PIR.json
+│   │   │       ├── sensores.json
+│   │   │       ├── TH.json
+│   │   │       └── US.json
+│   │   └── subMainLocal.py
+│   └── scripts
+│       ├── dataSensors.py
+│       └── sensors.py
+├── main.py
+├── README.md
+└── sensorbox.py
+
+7 directories, 15 files
+
 # **METR1CKA**
 
 > [Pagina web](https://metr1cka.github.io "Visitanos en DevBlogs")
